@@ -1,0 +1,153 @@
+/**
+ *	@file GDE\Maths\LineSegment2D.cpp
+ *	@brief 
+ *	
+ *	Copyright()
+ *		Copyright © 2004-2011 Media Design School. All Rights Reserved.
+ *	
+ *********************************************************************************************/
+#include "GDE/Core/Core.h"
+#include "LineSegment2D.h"
+#include "Circle.h"
+
+using namespace GDE;
+
+/**
+ *	Ininitialise the line segment.
+ *	@param v0	One end of the wall.
+ *	@param v1	The other end of the wall.
+ */
+void CLineSegment2D::Initialise( CFVec2Arg v0, CFVec2Arg v1 )
+{
+	m_vEnd[0] = v0;
+	m_vEnd[1] = v1;
+}
+
+/**
+ *	@param Circle A circle to evaluate to see if it intersects the wall.
+ *	@return true if the circle intersects the wall.
+ */
+bool CLineSegment2D::Intersects( const CCircle& Circle ) const
+{
+	return Circle.OverlapsLineSegment( m_vEnd[0], m_vEnd[1] );
+}
+
+/**
+ *	Check this line segment with an infinite ray, given in parametric form and return the collision if applicable.
+ *	@param vRayStart	Start point for parametric equation of infinite ray.
+ *	@param vRayOffset	Direction vector (coefficient of t) for paremetric equation of infinitie ray.
+ *	@param fT			To be filled in with the time (paremetric T) of intersection.
+ *	@return				True if the intersection occurs within this line segment.
+ */
+bool CLineSegment2D::GetLineIntersectionTime(  CFVec2Arg vRayStart, CFVec2Arg vRayOffset, FLOAT32& fT ) const
+{
+	// http://local.wasp.uwa.edu.au/~pbourke/geometry/lineline2d/
+	const CFVec2& P1 = m_vEnd[0];
+	const CFVec2& P2 = m_vEnd[1];
+	const CFVec2& P3 = vRayStart;
+	// no P4 required..
+	const CFVec2 V1 = P2-P1;
+	const CFVec2& V2 = vRayOffset;
+	
+	const FLOAT32 fDenom = V2.Y()*V1.X() - V2.X()*V1.Y();
+	
+	if ( fDenom == 0.0f )
+	{
+		return false; // no intersections, or the lines are the same!
+	}
+
+	const FLOAT32 fDRecip = 1.0f/fDenom;
+	// and then, finally Q (for x/y1 - x/y3)
+	const CFVec2 Q = P1-P3;
+
+	const FLOAT32 fTimeThis = (V2.X()*Q.Y() - V2.Y()*Q.X())*fDRecip;
+
+	if ( fTimeThis < 0.0f || fTimeThis > 1.0f )
+	{
+		// outside of the line segment.
+		return false;
+	}
+	fT = (V1.X()*Q.Y() - V1.Y()*Q.X())*fDRecip;
+	return true;
+}
+
+/**
+ *	Check this line segment, extending it to an infinite ray with an infinite ray, given in parametric form and return the collision if applicable.
+ *	@param vRayStart	Start point for parametric equation of infinite ray.
+ *	@param vRayOffset	Direction vector (coefficient of t) for paremetric equation of infinitie ray.
+ *	@param fTOther		To be filled in with the time (paremetric T) of intersection, with respect to the other line.
+ *	@param fTThis		To be filled in with the time (paremetric T) of intersection, with respect to this line, with dir being End1-End0.
+ *	@return				True if the intersection occurs within this line segment.
+ */
+bool CLineSegment2D::GetLineIntersectionTimes( CFVec2Arg vRayStart, CFVec2Arg vRayOffset, FLOAT32& fTOther, FLOAT32& fTThis ) const
+{
+	// http://local.wasp.uwa.edu.au/~pbourke/geometry/lineline2d/
+	const CFVec2& P1 = m_vEnd[0];
+	const CFVec2& P2 = m_vEnd[1];
+	const CFVec2& P3 = vRayStart;
+	// no P4 required..
+	const CFVec2 V1 = P2-P1;
+	const CFVec2& V2 = vRayOffset;
+	
+	const FLOAT32 fDenom = V2.Y()*V1.X() - V2.X()*V1.Y();
+	
+	if ( fDenom == 0.0f )
+	{
+		return false; // no intersections, or the lines are the same!
+	}
+
+	const FLOAT32 fDRecip = 1.0f/fDenom;
+	// and then, finally Q (for x/y1 - x/y3)
+	const CFVec2 Q = P1-P3;
+
+	fTThis = (V2.X()*Q.Y() - V2.Y()*Q.X())*fDRecip;
+	fTOther = (V1.X()*Q.Y() - V1.Y()*Q.X())*fDRecip;
+	return true;	
+}
+
+/**
+ *	Get the closest point on the line segment to the given point.
+ *	@param	vPoint		The point to find the closest too.
+ *	@param	vClosest	Returned as the closest point.
+ *	@return				Success, should never fail.
+ */
+bool CLineSegment2D::GetClosestPointToPoint( CFVec2Arg vPoint, CFVec2& vClosest ) const
+{
+	CFVec2 vRayDir = m_vEnd[1]-m_vEnd[2];
+	vRayDir.SetPerpendicular();
+	FLOAT32 fTOther, fTThis;
+	if ( GetLineIntersectionTimes( vPoint, vRayDir, fTOther, fTThis ) )
+	{
+		if ( fTThis <= 0.0f )
+		{
+			vClosest = m_vEnd[0];
+			return true;
+		}
+		if ( fTThis >= 1.0f )
+		{
+			vClosest = m_vEnd[1];
+			return true;
+		}
+
+		vClosest = vPoint + vRayDir * fTOther;
+		return true;
+	}
+	assert_now( "Should be unreachable" );
+	return false;
+}
+
+/**
+ *	Does the line segment intersect another segment.
+ *	
+ *	@param Other	The segment to test against.
+ *	@return true on intersection.
+ */
+bool CLineSegment2D::Intersects( const CLineSegment2D& Other ) const
+{
+	FLOAT32 fTime;
+	if ( GetLineIntersectionTime( Other.m_vEnd[0], Other.m_vEnd[1]-Other.m_vEnd[0], fTime ) )
+	{
+		return fTime >= 0.0f && fTime <= 1.0f;
+	}
+	return false;
+}

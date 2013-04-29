@@ -1,0 +1,39 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 10.00
+# Visual Studio 2008
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Day 001.1 - Day 001.4", "Day 001.1 - Day 001.4\Day 001.1 - Day 001.4.vcproj", "{9A6DBEF1-FA9D-47F8-B5D9-401834863237}"
+	ProjectSection(ProjectDependencies) = postProject
+		{E5BD1504-070F-408F-A64C-C853998B2323} = {E5BD1504-070F-408F-A64C-C853998B2323}
+	EndProjectSection
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "GazEngine", "GazEngine\GazEngine.vcproj", "{E5BD1504-070F-408F-A64C-C853998B2323}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Win32 = Debug|Win32
+		DebugServer|Win32 = DebugServer|Win32
+		Release|Win32 = Release|Win32
+		ReleaseServer|Win32 = ReleaseServer|Win32
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{9A6DBEF1-FA9D-47F8-B5D9-401834863237}.Debug|Win32.ActiveCfg = Debug|Win32
+		{9A6DBEF1-FA9D-47F8-B5D9-401834863237}.Debug|Win32.Build.0 = Debug|Win32
+		{9A6DBEF1-FA9D-47F8-B5D9-401834863237}.DebugServer|Win32.ActiveCfg = Debug|Win32
+		{9A6DBEF1-FA9D-47F8-B5D9-401834863237}.DebugServer|Win32.Build.0 = Debug|Win32
+		{9A6DBEF1-FA9D-47F8-B5D9-401834863237}.Release|Win32.ActiveCfg = Release|Win32
+		{9A6DBEF1-FA9D-47F8-B5D9-401834863237}.Release|Win32.Build.0 = Release|Win32
+		{9A6DBEF1-FA9D-47F8-B5D9-401834863237}.ReleaseServer|Win32.ActiveCfg = Release|Win32
+		{9A6DBEF1-FA9D-47F8-B5D9-401834863237}.ReleaseServer|Win32.Build.0 = Release|Win32
+		{E5BD1504-070F-408F-A64C-C853998B2323}.Debug|Win32.ActiveCfg = Debug|Win32
+		{E5BD1504-070F-408F-A64C-C853998B2323}.Debug|Win32.Build.0 = Debug|Win32
+		{E5BD1504-070F-408F-A64C-C853998B2323}.DebugServer|Win32.ActiveCfg = DebugServer|Win32
+		{E5BD1504-070F-408F-A64C-C853998B2323}.DebugServer|Win32.Build.0 = DebugServer|Win32
+		{E5BD1504-070F-408F-A64C-C853998B2323}.Release|Win32.ActiveCfg = Release|Win32
+		{E5BD1504-070F-408F-A64C-C853998B2323}.Release|Win32.Build.0 = Release|Win32
+		{E5BD1504-070F-408F-A64C-C853998B2323}.ReleaseServer|Win32.ActiveCfg = ReleaseServer|Win32
+		{E5BD1504-070F-408F-A64C-C853998B2323}.ReleaseServer|Win32.Build.0 = ReleaseServer|Win32
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

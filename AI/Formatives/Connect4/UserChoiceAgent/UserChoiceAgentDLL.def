@@ -1,0 +1,5 @@
+LIBRARY	"UserChoiceAgent"
+
+EXPORTS
+DLL_GetWrapperBase PRIVATE
+DLL_ShutdownWrapperBase PRIVATE

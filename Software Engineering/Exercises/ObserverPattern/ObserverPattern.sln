@@ -1,0 +1,29 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 10.00
+# Visual Studio 2008
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "ObserverPattern", "ObserverPattern\ObserverPattern.vcproj", "{8E18C430-E1B8-43EB-9047-A848460C086F}"
+	ProjectSection(ProjectDependencies) = postProject
+		{E5BD1504-070F-408F-A64C-C853998B2323} = {E5BD1504-070F-408F-A64C-C853998B2323}
+	EndProjectSection
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "GazEngine", "GazEngine\GazEngine.vcproj", "{E5BD1504-070F-408F-A64C-C853998B2323}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Win32 = Debug|Win32
+		Release|Win32 = Release|Win32
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{8E18C430-E1B8-43EB-9047-A848460C086F}.Debug|Win32.ActiveCfg = Debug|Win32
+		{8E18C430-E1B8-43EB-9047-A848460C086F}.Debug|Win32.Build.0 = Debug|Win32
+		{8E18C430-E1B8-43EB-9047-A848460C086F}.Release|Win32.ActiveCfg = Release|Win32
+		{8E18C430-E1B8-43EB-9047-A848460C086F}.Release|Win32.Build.0 = Release|Win32
+		{E5BD1504-070F-408F-A64C-C853998B2323}.Debug|Win32.ActiveCfg = Debug|Win32
+		{E5BD1504-070F-408F-A64C-C853998B2323}.Debug|Win32.Build.0 = Debug|Win32
+		{E5BD1504-070F-408F-A64C-C853998B2323}.Release|Win32.ActiveCfg = Release|Win32
+		{E5BD1504-070F-408F-A64C-C853998B2323}.Release|Win32.Build.0 = Release|Win32
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

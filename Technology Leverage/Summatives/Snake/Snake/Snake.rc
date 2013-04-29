@@ -1,0 +1,113 @@
+// Microsoft Visual C++ generated resource script.
+//
+#include "resource.h"
+
+#define APSTUDIO_READONLY_SYMBOLS
+/////////////////////////////////////////////////////////////////////////////
+//
+// Generated from the TEXTINCLUDE 2 resource.
+//
+#include "afxres.h"
+
+/////////////////////////////////////////////////////////////////////////////
+#undef APSTUDIO_READONLY_SYMBOLS
+
+/////////////////////////////////////////////////////////////////////////////
+// English (New Zealand) resources
+
+#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_ENZ)
+#ifdef _WIN32
+LANGUAGE LANG_ENGLISH, SUBLANG_ENGLISH_NZ
+#pragma code_page(1252)
+#endif //_WIN32
+
+#ifdef APSTUDIO_INVOKED
+/////////////////////////////////////////////////////////////////////////////
+//
+// TEXTINCLUDE
+//
+
+1 TEXTINCLUDE 
+BEGIN
+    "resource.h\0"
+END
+
+2 TEXTINCLUDE 
+BEGIN
+    "#include ""afxres.h""\r\n"
+    "\0"
+END
+
+3 TEXTINCLUDE 
+BEGIN
+    "\r\n"
+    "\0"
+END
+
+#endif    // APSTUDIO_INVOKED
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Dialog
+//
+
+IDD_SERVER_BROWSER DIALOGEX 0, 0, 580, 207
+STYLE DS_SETFONT | DS_MODALFRAME | DS_FIXEDSYS | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "Server Browser"
+FONT 8, "MS Shell Dlg", 400, 0, 0x1
+BEGIN
+    DEFPUSHBUTTON   "Join",IDJOIN,144,162,66,14
+    LISTBOX         IDSERVER_LIST,12,96,270,60,LBS_SORT | LBS_NOINTEGRALHEIGHT | WS_VSCROLL | WS_TABSTOP
+    PUSHBUTTON      "Host",IDHOST,144,78,66,14
+    EDITTEXT        IDGAME_NAME,42,78,96,14,ES_AUTOHSCROLL
+    EDITTEXT        IDPLAYER_NAME,42,42,96,14,ES_AUTOHSCROLL
+    LTEXT           "Name",IDPLAYER_NAME_LABEL,12,42,24,12
+    LTEXT           "Welcome, name your player, join a game or start your own!",IDSTATUS,6,6,282,12
+    PUSHBUTTON      "Start",IDSTART,216,78,66,14,WS_DISABLED
+    LTEXT           "Name",IDGAME_NAME_LABEL,12,78,24,12
+    GROUPBOX        "Player",IDPLAYER_GROUP,6,30,282,30
+    GROUPBOX        "Servers",IDSERVER_GROUP,6,66,282,114
+    GROUPBOX        "Game",IDGAME_GROUP,294,6,282,192
+    LISTBOX         IDPLAYER_LIST,300,36,270,66,LBS_SORT | LBS_NOINTEGRALHEIGHT | WS_DISABLED | WS_VSCROLL | WS_TABSTOP
+    PUSHBUTTON      "Leave",IDLEAVE,216,162,66,14,WS_DISABLED
+    PUSHBUTTON      "Quit",IDCANCEL,222,186,66,14
+    LTEXT           "Players",IDPLAYER_LIST_LABEL,300,18,270,12
+    LTEXT           "High Scores",IDHIGH_SCORE_LIST_LABEL,300,108,270,12
+    LISTBOX         IDHIGH_SCORE_LIST,300,126,270,66,LBS_NOINTEGRALHEIGHT | WS_DISABLED | WS_VSCROLL | WS_TABSTOP
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// DESIGNINFO
+//
+
+#ifdef APSTUDIO_INVOKED
+GUIDELINES DESIGNINFO 
+BEGIN
+    IDD_SERVER_BROWSER, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 573
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 200
+    END
+END
+#endif    // APSTUDIO_INVOKED
+
+#endif    // English (New Zealand) resources
+/////////////////////////////////////////////////////////////////////////////
+
+
+
+#ifndef APSTUDIO_INVOKED
+/////////////////////////////////////////////////////////////////////////////
+//
+// Generated from the TEXTINCLUDE 3 resource.
+//
+
+
+/////////////////////////////////////////////////////////////////////////////
+#endif    // not APSTUDIO_INVOKED
+

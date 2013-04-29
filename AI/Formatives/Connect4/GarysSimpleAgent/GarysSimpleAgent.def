@@ -1,0 +1,5 @@
+LIBRARY	"GarysSimpleAgent"
+
+EXPORTS
+DLL_GetWrapperBase PRIVATE
+DLL_ShutdownWrapperBase PRIVATE
